@@ -6,7 +6,7 @@ from app import db
 user_bp = Blueprint('user', __name__, url_prefix='/user')
 
 # Route for creating a new user (HTML form submission)
-@user_bp.route('/create', methods=['POST'])
+@user_bp.route('/create', methods=['GET','POST'])
 def create_user():
     if request.method == 'POST':
         data = request.form
