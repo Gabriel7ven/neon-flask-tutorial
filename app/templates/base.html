@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Flask Neon App{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}" />
+  </head>
+  <body class="bg-gray-100">
+    <nav class="bg-blue-500 p-4 text-white">
+      <div class="container mx-auto">
+        <a href="/" class="text-2xl font-bold">Flask Neon App</a>
+      </div>
+    </nav>
+    <main class="container mx-auto mt-8">{% block content %}{% endblock %}</main>
+  </body>
+</html>

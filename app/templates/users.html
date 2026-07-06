@@ -1,0 +1,15 @@
+{% extends "base.html" %} {% block title %}Users{% endblock %} {% block content %}
+<h1 class="mb-4 text-3xl font-bold">Users</h1>
+<div class="rounded bg-white p-4 shadow-md">
+  <form action="{{ url_for('user.create_user') }}" method="post" class="mb-4">
+    <input type="text" name="username" placeholder="Username" required class="mr-2 border p-2" />
+    <input type="email" name="email" placeholder="Email" required class="mr-2 border p-2" />
+    <button type="submit" class="bg-blue-500 rounded px-4 py-2 text-white">Add User</button>
+  </form>
+  <ul>
+    {% for user in users %}
+    <li class="mb-2">{{ user.username }} ({{ user.email }})</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
