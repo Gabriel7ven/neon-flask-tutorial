@@ -8,11 +8,13 @@ user_bp = Blueprint('user', __name__, url_prefix='/user')
 # Route for creating a new user (HTML form submission)
 @user_bp.route('/create', methods=['POST'])
 def create_user():
-    data = request.form
-    new_user = User(username=data['username'], email=data['email'])
-    db.session.add(new_user)
-    db.session.commit()
-    return redirect(url_for('user.list_users'))
+    if request.method == 'POST':
+        data = request.form
+        new_user = User(username=data['username'], email=data['email'])
+        db.session.add(new_user)
+        db.session.commit()
+        return redirect(url_for('user.list_users'))
+    return render_template('create_user.html')
 
 # Route for displaying all users (HTML)
 @user_bp.route('/list', methods=['GET'])
